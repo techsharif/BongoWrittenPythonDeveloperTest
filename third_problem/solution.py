@@ -4,10 +4,19 @@ class Node:
         self.parent = parent
 
 def collect_all_parents(node):
-	return []
+	if not node:
+		return []
+	return  collect_all_parents(node.parent) + [node.value]
 
 def lca_value_from_parents_list(list1, list2):
-	return 0
+	ln = min(len(list1), len(list2))
+	result = None
+	for i in range(ln):
+		if not list1[i] == list2[i]:
+			break
+		else:
+			result = list1[i]
+	return result
 
 
 def lca(node1, node2):
